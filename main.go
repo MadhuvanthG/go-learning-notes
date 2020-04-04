@@ -6,4 +6,6 @@ func main() {
 
 	// Demoes struct and pointers
 	demoStructAndPointers()
+
+	demoMaps()
 }

@@ -29,3 +29,9 @@ For ex., a declaration like this without any value assignment will get assigned 
 What types behave as value vs reference types when passed around-
 
 ![value-reference-types](/images/value-reference-types.png)
+
+# Difference between Maps and Struct
+
+Basic differences between Maps and Struct
+
+![Maps-vs-Struct](/images/maps-vs-struct.png)
