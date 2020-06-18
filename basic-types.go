@@ -31,39 +31,34 @@ func demoTypes() {
 
 func demoDatastructures() {
 	// Array vs Slice
-	// Array is a fixed number of elements - specify the length of the array
+	// Array is a fixed number of elements, can't be resized - specify the length of the array
 	var productsArray = [3]string{"watch", "eyeglasses", "phone"}
-	productsArray[1] = "new watch"
 
 	// Slice
 	// Slice- Associated with an underlying Array that can grow or shrink
-	var productsSlice = []string{"watch", "eyeglasses", "phone"}
+	// Reference to a section of an array
+	productsSlice := productsArray[:]
+	productsSlice[1] = "Ray-Ban eyeglasses"
+	fmt.Printf("Array %v", productsArray)
+	fmt.Printf("Slice %v", productsSlice)
 
+	// Growing slices safely
+	// options - append, copy
 	// Appends an element and returns a new slice
-	// You'll have to assign the returned value to be able to refer to the new element
 	productsSlice = append(productsSlice, "newWatch")
 
-	// Range based retrieval slice[startIndexIncluding:upToNotIncluding]
-	// Prints the first two elements
+	// New slice returned by append above is pointing to a different array
+	// Because we are appending 4th element but the existing underlying array's (i.e. productsArray) capacity is only 3
+	// In other words, the new element we appended did not affect the productsArray
+	fmt.Printf("Array %v", productsArray)
+	fmt.Printf("Slice %v", productsSlice)
+
+	// Half open range based retrieval slice[startIndexIncluding:upToNotIncluding]
+	// Prints the first two elements at indices 0 and 1
+	// Both startIndexIncluding and upToNotIncluding are optional
 	fmt.Println(productsSlice[0:2])
 
-	// Slices refer to the same array under the hood
-	// So modifying the elements (not the slice itself) of a re-slice (newProductsSlice) modifies the elements of the original slice (productsSlice)
-	newProductsSlice := productsSlice[0:2]
-	newProductsSlice[1] = "eyeglassesFromSlice"
-
-	// Both startIndexIncluding and upToNotIncluding are optional
-	// this prints all the elements in the slice
-	fmt.Println(productsSlice[0:])
-
-	// this prints elements at 0, 1, 2
-	fmt.Println(productsSlice[:3])
-
-	// length and capacity of the productsSlice
-	fmt.Println(len(productsSlice))
-	fmt.Println(cap(productsSlice))
-
-	// For more on Arrays vs Slices
+	// For more on relationship between Arrays and Slices
 	// https://blog.golang.org/go-slices-usage-and-internals
 
 	// Byte slices
