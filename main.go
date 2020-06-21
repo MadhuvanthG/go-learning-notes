@@ -1,9 +1,9 @@
 package main
 
 func main() {
-	// Demoes basic types in Go and introduces to custom types
-	demoBasicTypes()
+	demoVariablesAndConstants()
 
-	// Demoes struct and pointers
+	demoArraysAndSlices()
+
 	demoStructAndPointers()
 }

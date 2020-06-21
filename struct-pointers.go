@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 // A struct is a group of fields that describe something
-// Similar to object in JS
 type product struct {
 	code int
 	name string
@@ -17,30 +16,30 @@ func demoStructAndPointers() {
 	// Assigning value to a field in struct
 	// We update the code of first product directly
 	user1Cart[0].code = 27
-
-	// To update code of second product, let's use a receiver function `updateCode`
-	user1Cart[1].updateCode(30)
-
-	// Now, the new code 30 will NOT be updated when you print out
-	// Because Go passes by value by default
 	fmt.Printf("%v", user1Cart)
 
-	// Pointers is the answer, if you want to update code on the product it's called on
-	// Note that the only difference is which function we're calling (`updateCode` vs `updateProductCode`)
-	// `updateProductCode` receives a pointer to a product and hence always operates on the product the function is called on
-	user1Cart[1].updateProductCode(35)
+	// To update code of second product, let's use a function `updateCode`
+	updateCode(user1Cart[1], 30)
+	fmt.Printf("%v", user1Cart)
 
+	// However, the updated code doesn't reflect in the user's cart
+	// Because, struct passes by "value"
+	// What if you want the updated code to reflect in the cart
+
+	// Welcome to pointers!
+	// Create a reference to second product of user's cart using "&"
+	secondProduct := &user1Cart[1]
+
+	// pass the struct by reference it to the function
+	updateCodeByReference(secondProduct, 30)
 	fmt.Printf("%v", user1Cart)
 }
 
-// Receiver functions on struct
-// a function to update code of any given product
-func (p product) updateCode(newCode int) {
-	p.code = newCode
+func updateCode(product product, newCode int) {
+	product.code = newCode
 }
 
-// Receives pointer to a product
-// So always operates on the product the function is called on
-func (p *product) updateProductCode(newCode int) {
-	p.code = newCode
+// Accepts a pointer (see "*") to type "product"
+func updateCodeByReference(product *product, newCode int) {
+	product.code = newCode
 }
