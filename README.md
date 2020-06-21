@@ -13,8 +13,10 @@
       * formatting
       * code style
       * compartmentalizing
-    * 
-    * 
+    * Native tooling support
+      * building binaries
+      * linting
+      * ...
     * More resources - https://github.com/golang/go/wiki/WhyGo
 # Packages - Introduction
     * Packages is a collection of source files that perform a specific function
