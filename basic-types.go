@@ -2,15 +2,7 @@ package main
 
 import "fmt"
 
-func demoBasicTypes() {
-	// Demo how to declare variables and work with it
-	// demoVariables()
-	// demoTypes()
-	demoDatastructures() // Arrays, slices etc..
-	defineGlasses()      // Creating and using custom types
-}
-
-func demoVariables() {
+func demoVariablesAndConstants() {
 	// variable declaration
 	var productName string
 
@@ -23,13 +15,13 @@ func demoVariables() {
 	// For reassignments, just do a "=" and not a ":="
 	productType = "Fashion"
 
-	fmt.Println(productName, productType)
+	// Multiple variables declaration
+	productName, productLabel := "Jeans", "xxx"
+
+	fmt.Println(productName, productType, productLabel)
 }
 
-func demoTypes() {
-}
-
-func demoDatastructures() {
+func demoArraysAndSlices() {
 	// Array vs Slice
 	// Array is a fixed number of elements, can't be resized - specify the length of the array
 	var productsArray = [3]string{"watch", "eyeglasses", "phone"}
@@ -60,10 +52,6 @@ func demoDatastructures() {
 
 	// For more on relationship between Arrays and Slices
 	// https://blog.golang.org/go-slices-usage-and-internals
-
-	// Byte slices
-
-	// Maps
 }
 
 // Custom types and method sets
@@ -76,10 +64,4 @@ type products []string
 // where p is a common naming convention to refer to a product instance (or variable) that this function is called upon
 func (p products) getNames() []string {
 	return p
-}
-
-func defineGlasses() {
-	sunglasses := products{"Rayban X12"}
-
-	fmt.Println(sunglasses.getNames())
 }
