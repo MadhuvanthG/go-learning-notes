@@ -11,9 +11,9 @@ type Logger struct {
 	splunkLoggerConnection string // connection string to Splunk server
 }
 
-// LogEvent represents information of any event
+// LogEventType represents information of any event
 // that occurs in your application
-type LogEvent struct {
+type LogEventType struct {
 	name    string
 	message []string
 }
@@ -26,7 +26,7 @@ type splunkPayload struct {
 }
 
 // 1. Expose a method that simplifies logging
-func (l *Logger) logEvent(event LogEvent) (statusCode string, err error) {
+func (l *Logger) logEvent(event LogEventType) (statusCode string, err error) {
 	// a. Convert LogEvent into a payload
 	payload := l.constructSplunkPayload(event)
 	statusCode, err = l.sendSplunkEvent(payload)
@@ -34,7 +34,7 @@ func (l *Logger) logEvent(event LogEvent) (statusCode string, err error) {
 }
 
 // 2. A method to convert the log object into a payload that Splunk expects
-func (l *Logger) constructSplunkPayload(event LogEvent) (payload splunkPayload) {
+func (l *Logger) constructSplunkPayload(event LogEventType) (payload splunkPayload) {
 	switch l.logType {
 	case "PaymentService":
 		payload = splunkPayload{
@@ -57,19 +57,4 @@ func (l *Logger) constructSplunkPayload(event LogEvent) (payload splunkPayload) 
 // 3. send event to splunk
 func (l *Logger) sendSplunkEvent(payload splunkPayload) (string, error) {
 	return "200", nil
-}
-
-// InitializeLoggers initlaizes all the different loggers application wants
-func InitializeLoggers() {
-	splunkLoggerConnection := "<token>"
-	// Logger to be used all functions related to Payment services
-	paymentServiceLogger := Logger{
-		logType:                "PaymentService",
-		splunkLoggerConnection: splunkLoggerConnection,
-	}
-
-	paymentServiceLogger.logEvent(LogEvent{
-		name:    "authorize payment",
-		message: []string{"user xxx", "amount xxx"},
-	})
 }
