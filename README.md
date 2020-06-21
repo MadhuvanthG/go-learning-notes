@@ -44,16 +44,16 @@
     * Available on any instance of the type on which the method is defined on
     * Allows you to write custom types to abstract group related logic
     * Pointer receivers vs Value receivers
-# Interfaces
-    * Defines requirements explicitly
-    * Helps you encapsulate code
-    * Good material - https://www.calhoun.io/how-do-interfaces-work-in-go/
 # Custom Packages and Go Modules
     * Convention / Common practices
       * all files belonging to a package reside in a directory
       * name the folder same as the package name
     * Import statements
     * Exported names
+# Interfaces
+    * Defines requirements explicitly
+    * Helps you encapsulate code
+    * Good material - https://www.calhoun.io/how-do-interfaces-work-in-go/
 # Concurrency - Channels and Go routines - <DIG DEEP>
 # Error handling - <DIG DEEP>
     * Defer and stacking defers
