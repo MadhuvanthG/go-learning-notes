@@ -2,13 +2,8 @@
     * Developed by Google
     * Compiled
     * Statically typed
-    * 
-    * 
-    * 
-    * 
-    * 
 # Why Go - <DIG DEEP>
-    * Very strong and broad native library support
+    * Very strong native library support
     * Highly opinionated be it-
       * formatting
       * code style
@@ -39,6 +34,9 @@
 # Pointers
     * What are value types
     * What are reference types
+    * When to use Pointers
+      * Depends on the value you are working with and what your program needs
+      * Good material - https://www.ardanlabs.com/blog/2014/12/using-pointers-in-go.html
 # Methods
     * Object oriented approach vs Go approach
     * Functions with `receiver` argument
@@ -54,7 +52,7 @@
     * Exported names
 # Interfaces
     * Defines requirements explicitly
-    * Helps you encapsulate code
+    * Helps reuse code
     * Good material - https://www.calhoun.io/how-do-interfaces-work-in-go/
 # Concurrency - Channels and Go routines - <DIG DEEP>
 # Error handling - <DIG DEEP>
@@ -62,6 +60,6 @@
     * Panic
     * Recover
 # gRPC - <DIG DEEP>
-# Testing in Go
 # http package - <DIG DEEP>
+# Testing in Go
 # Database interactions
