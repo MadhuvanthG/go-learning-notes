@@ -16,6 +16,7 @@
 # Packages - Introduction
     * Packages is a collection of source files that perform a specific function
     * All applications have a `main` package with a function `main` which is the entry point
+    * For better readability, reusability and maintainability
 # Variables, Constants and Zero values
 # Arrays and Slices
     * What are slices? - Reference to underlying array
@@ -27,16 +28,23 @@
     * No default values and that's intentional by design
     * Can return multiple values and that's a common pattern used in functions that can throw an error
 # Structs
-    * Creating struct literals using order or field-names
+    * Creating struct literals
     * Updating fields using dot notation
     * Struct is a value type
-    * 
+    * Embedding structs
 # Pointers
     * What are value types
     * What are reference types
     * When to use Pointers
-      * Depends on the value you are working with and what your program needs
+      * There is no blueprint; down to the needs of your program
+      * Some use-cases might be:
+        * Pass mutable values around
+        * Working with really large structs; what is really large is subjective, so benchmarking is a better tool to make a decision
+      * Understand the effect on Garbage Collection when you use pointers
+        * https://www.ardanlabs.com/blog/2017/05/language-mechanics-on-stacks-and-pointers.html
       * Good material - https://www.ardanlabs.com/blog/2014/12/using-pointers-in-go.html
+      * Even better material
+        * Benchmark performance and then make an informed decision
 # Methods
     * Object oriented approach vs Go approach
     * Functions with `receiver` argument
