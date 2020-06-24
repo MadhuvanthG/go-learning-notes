@@ -2,13 +2,8 @@
     * Developed by Google
     * Compiled
     * Statically typed
-    * 
-    * 
-    * 
-    * 
-    * 
 # Why Go - <DIG DEEP>
-    * Very strong and broad native library support
+    * Very strong native library support
     * Highly opinionated be it-
       * formatting
       * code style
@@ -21,6 +16,7 @@
 # Packages - Introduction
     * Packages is a collection of source files that perform a specific function
     * All applications have a `main` package with a function `main` which is the entry point
+    * For better readability, reusability and maintainability
 # Variables, Constants and Zero values
 # Arrays and Slices
     * What are slices? - Reference to underlying array
@@ -32,13 +28,23 @@
     * No default values and that's intentional by design
     * Can return multiple values and that's a common pattern used in functions that can throw an error
 # Structs
-    * Creating struct literals using order or field-names
+    * Creating struct literals
     * Updating fields using dot notation
     * Struct is a value type
-    * 
+    * Embedding structs
 # Pointers
     * What are value types
     * What are reference types
+    * When to use Pointers
+      * There is no blueprint; down to the needs of your program
+      * Some use-cases might be:
+        * Pass mutable values around
+        * Working with really large structs; what is really large is subjective, so benchmarking is a better tool to make a decision
+      * Understand the effect on Garbage Collection when you use pointers
+        * https://www.ardanlabs.com/blog/2017/05/language-mechanics-on-stacks-and-pointers.html
+      * Good material - https://www.ardanlabs.com/blog/2014/12/using-pointers-in-go.html
+      * Even better material
+        * Benchmark performance and then make an informed decision
 # Methods
     * Object oriented approach vs Go approach
     * Functions with `receiver` argument
@@ -54,7 +60,7 @@
     * Exported names
 # Interfaces
     * Defines requirements explicitly
-    * Helps you encapsulate code
+    * Helps reuse code
     * Good material - https://www.calhoun.io/how-do-interfaces-work-in-go/
 # Concurrency - Channels and Go routines - <DIG DEEP>
 # Error handling - <DIG DEEP>
@@ -62,6 +68,6 @@
     * Panic
     * Recover
 # gRPC - <DIG DEEP>
-# Testing in Go
 # http package - <DIG DEEP>
+# Testing in Go
 # Database interactions

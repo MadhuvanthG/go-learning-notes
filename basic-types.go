@@ -18,7 +18,19 @@ func demoVariablesAndConstants() {
 	// Multiple variables declaration
 	productName, productLabel := "Jeans", "xxx"
 
+	// Demo zero values
+
 	fmt.Println(productName, productType, productLabel)
+}
+
+func demoArraysAndSlicesLive() {
+	// Create an array
+
+	// Create a slice from the array
+
+	// Changes to slice will affect values of the underlying array
+
+	// Growing slices
 }
 
 func demoArraysAndSlices() {

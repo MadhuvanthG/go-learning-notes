@@ -7,21 +7,20 @@ func main() {
 
 	demoStructAndPointers()
 
-	// demoMethods
-	InitializeLoggers()
+	// InitializeLoggers()
 }
 
 // InitializeLoggers initlaizes all the different loggers application wants
-func InitializeLoggers() {
-	splunkLoggerConnection := "<token>"
-	// Logger to be used all functions related to Payment services
-	paymentServiceLogger := Logger{
-		logType:                "PaymentService",
-		splunkLoggerConnection: splunkLoggerConnection,
-	}
+// func InitializeLoggers() {
+// 	splunkLoggerConnection := "<token>"
+// 	// Logger to be used all functions related to Payment services
+// 	paymentServiceLogger := Logger{
+// 		logType:                "PaymentService",
+// 		splunkLoggerConnection: splunkLoggerConnection,
+// 	}
 
-	paymentServiceLogger.logEvent(LogEventType{
-		name:    "authorize payment",
-		message: []string{"user xxx", "amount xxx"},
-	})
-}
+// 	paymentServiceLogger.logEvent(LogEventType{
+// 		name:    "authorize payment",
+// 		message: []string{"user xxx", "amount xxx"},
+// 	})
+// }
