@@ -1,17 +1,12 @@
 # What is Go?
-    * Developed by Google
+    * Conceived and Developed at Google
     * Compiled
-    * Statically typed
-# Why Go - <DIG DEEP>
+    * Statically and strongly typed
+# Why Go - including but not limited to:
     * Very strong native library support
-    * Highly opinionated be it-
-      * formatting
-      * code style
-      * compartmentalizing
-    * Native tooling support
-      * building binaries
-      * linting
-      * ...
+    * Highly opinionated
+    * Native tooling support is strong
+    * Needs a lot more research and experience
     * More resources - https://github.com/golang/go/wiki/WhyGo
 # Packages - Introduction
     * Packages is a collection of source files that perform a specific function
@@ -62,12 +57,13 @@
     * Defines requirements explicitly
     * Helps reuse code
     * Good material - https://www.calhoun.io/how-do-interfaces-work-in-go/
-# Concurrency - Channels and Go routines - <DIG DEEP>
-# Error handling - <DIG DEEP>
+# Concurrency - Channels and Go routines
+    * Material to watch - Rob pike's talk - https://www.youtube.com/watch?v=f6kdp27TYZs
+# Error handling
     * Defer and stacking defers
     * Panic
     * Recover
-# gRPC - <DIG DEEP>
-# http package - <DIG DEEP>
+# gRPC
+# http package
 # Testing in Go
 # Database interactions
