@@ -1,7 +1,12 @@
 package main
 
 // REQUIREMENTS
-// 1. Log important event in all the services ex. payment auth, payment refund init, cart products add, cart abandon
+// 1. Log important event in all the services
+// examples-
+// payment auth
+// payment refund init
+// cart products add
+// cart abandon
 // 2. Abstract logging complexity from the app services
 // 3. Logging service should be reusable
 
@@ -26,15 +31,15 @@ type splunkPayload struct {
 }
 
 // 1. Expose a method that simplifies logging
-func (l *Logger) logEvent(event LogEventType) (statusCode string, err error) {
+func (l *Logger) logEventOld(event LogEventType) (statusCode string, err error) {
 	// a. Convert LogEvent into a payload
-	payload := l.constructSplunkPayload(event)
-	statusCode, err = l.sendSplunkEvent(payload)
+	payload := l.constructSplunkPayloadOld(event)
+	statusCode, err = l.sendSplunkEventOld(payload)
 	return
 }
 
 // 2. A method to convert the log object into a payload that Splunk expects
-func (l *Logger) constructSplunkPayload(event LogEventType) (payload splunkPayload) {
+func (l *Logger) constructSplunkPayloadOld(event LogEventType) (payload splunkPayload) {
 	switch l.logType {
 	case "PaymentService":
 		payload = splunkPayload{
@@ -55,6 +60,6 @@ func (l *Logger) constructSplunkPayload(event LogEventType) (payload splunkPaylo
 }
 
 // 3. send event to splunk
-func (l *Logger) sendSplunkEvent(payload splunkPayload) (string, error) {
+func (l *Logger) sendSplunkEventOld(payload splunkPayload) (string, error) {
 	return "200", nil
 }
