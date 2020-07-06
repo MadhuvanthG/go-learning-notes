@@ -1,5 +1,10 @@
 package main
 
+import (
+	"time"
+	_ "time"
+)
+
 // REQUIREMENTS
 // 1. Log important event in all the services
 // examples-
@@ -10,56 +15,53 @@ package main
 // 2. Abstract logging complexity from the app services
 // 3. Logging service should be reusable
 
-// Logger groups fields related to sending logs to Splunk
-type Logger struct {
-	logType                string // server log, downstream request log, client log
-	splunkLoggerConnection string // connection string to Splunk server
+type logger struct {
+	logType string // payment service, auth service etc..
+	retries int
 }
 
-// LogEventType represents information of any event
-// that occurs in your application
-type LogEventType struct {
-	name    string
-	message []string
+type logMessage struct {
+	method          string   // name of the method that the log is coming from
+	requestHeaders  []string // information on headers of the request event
+	responsePayload []string
 }
 
 type splunkPayload struct {
-	eventName string
-	logLevel  string // info/debug/error
-	metadata  []string
-	host      string // name of the Kube pod which generates the event
+	method   string // service name + method name
+	time     time.Time
+	host     string // K8s pod that generated the error
+	metadata []string
 }
 
-// 1. Expose a method that simplifies logging
-func (l *Logger) logEventOld(event LogEventType) (statusCode string, err error) {
-	// a. Convert LogEvent into a payload
-	payload := l.constructSplunkPayloadOld(event)
-	statusCode, err = l.sendSplunkEventOld(payload)
-	return
+func (l logger) logEventOld(message logMessage) (string, error) {
+	// 1. Use the incoming message to construct the splunk payload
+	payload := l.constructSplunkPayloadOld(message)
+
+	// 2. Send the event to Splunk
+	status, err := l.sendSplunkEventOld(payload)
+
+	// 3. Handle failures/retries and propogate the status back to the calling service
+	return status, err
 }
 
-// 2. A method to convert the log object into a payload that Splunk expects
-func (l *Logger) constructSplunkPayloadOld(event LogEventType) (payload splunkPayload) {
-	switch l.logType {
-	case "PaymentService":
-		payload = splunkPayload{
-			eventName: event.name,
-			logLevel:  "Info",
-			metadata:  []string{"Test", "Log"},
+func (l logger) constructSplunkPayloadOld(message logMessage) splunkPayload {
+	switch message.method {
+	case "Payment service":
+		return splunkPayload{
+			time:   time.Now(),
+			host:   "",
+			method: l.logType + message.method,
 		}
-
-	case "SubscriptionService":
-		payload = splunkPayload{
-			eventName: event.name,
-			logLevel:  "Info",
-			metadata:  []string{"Test", "Log"},
-		}
+	case "Auth service":
 	}
 
-	return
+	return splunkPayload{}
 }
 
-// 3. send event to splunk
-func (l *Logger) sendSplunkEventOld(payload splunkPayload) (string, error) {
+func (l logger) sendSplunkEventOld(payload splunkPayload) (string, error) {
+	// Send the event to server
+
+	// Retry it for l.retires times
+
 	return "200", nil
 }

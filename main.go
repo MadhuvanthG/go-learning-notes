@@ -7,5 +7,5 @@ func main() {
 
 	// demoStructAndPointers()
 
-	// InitializeLoggers()
+	// initializePaymentLogger()
 }

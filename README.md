@@ -45,7 +45,7 @@
     * Functions with `receiver` argument
     * Defined on types
     * Available on any instance of the type on which the method is defined on
-    * Allows you to write custom types to abstract group related logic
+    * Allows you to write custom types to abstract/group related logic
     * Pointer receivers vs Value receivers
 # Custom Packages and Go Modules
     * Convention / Common practices
