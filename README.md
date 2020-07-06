@@ -53,6 +53,7 @@
       * name the folder same as the package name
     * Import statements
     * Exported names
+    * Can you build a custom package as an executable?
 # Interfaces
     * Defines requirements explicitly
     * Helps reuse code
