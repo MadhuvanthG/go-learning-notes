@@ -57,7 +57,8 @@
     * Good material - https://blog.golang.org/using-go-modules
 # Interfaces
     * Defines requirements explicitly
-    * Helps reuse code
+    * Code encapsulation and reuse
+    * Implicit conformance
     * Good material - https://www.calhoun.io/how-do-interfaces-work-in-go/
 # Concurrency - Channels and Go routines
     * Material to watch - Rob pike's talk - https://www.youtube.com/watch?v=f6kdp27TYZs

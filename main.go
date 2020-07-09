@@ -1,5 +1,9 @@
 package main
 
+import (
+	"go-learning-notes/logger"
+)
+
 func main() {
 	// demoVariablesAndConstants()
 
@@ -7,5 +11,18 @@ func main() {
 
 	// demoStructAndPointers()
 
-	// initializePaymentLogger()
+	initializePaymentLogger()
+}
+
+func initializePaymentLogger() {
+	paymentLogger := logger.Logger{
+		LogType: "payment service",
+		Retries: 2,
+	}
+
+	paymentLogger.LogEvent(logger.LogMessage{
+		Method:          "refund",
+		RequestHeaders:  []string{},
+		ResponsePayload: []string{},
+	})
 }

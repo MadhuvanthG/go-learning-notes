@@ -1,8 +1,7 @@
-package main
+package logger
 
 import (
 	"time"
-	_ "time"
 )
 
 // REQUIREMENTS
@@ -15,15 +14,17 @@ import (
 // 2. Abstract logging complexity from the app services
 // 3. Logging service should be reusable
 
-type logger struct {
-	logType string // payment service, auth service etc..
-	retries int
+// Logger represents a type that's used for logging
+type Logger struct {
+	LogType string // payment service, auth service etc..
+	Retries int
 }
 
-type logMessage struct {
-	method          string   // name of the method that the log is coming from
-	requestHeaders  []string // information on headers of the request event
-	responsePayload []string
+// LogMessage is a type that you want to use
+type LogMessage struct {
+	Method          string   // name of the method that the log is coming from
+	RequestHeaders  []string // information on headers of the request event
+	ResponsePayload []string
 }
 
 type splunkPayload struct {
@@ -33,24 +34,25 @@ type splunkPayload struct {
 	metadata []string
 }
 
-func (l logger) logEventOld(message logMessage) (string, error) {
+// LogEvent is the method you want to use log different app events
+func (l Logger) LogEvent(message LogMessage) (string, error) {
 	// 1. Use the incoming message to construct the splunk payload
-	payload := l.constructSplunkPayloadOld(message)
+	payload := l.constructSplunkPayload(message)
 
 	// 2. Send the event to Splunk
-	status, err := l.sendSplunkEventOld(payload)
+	status, err := l.sendSplunkEvent(payload)
 
 	// 3. Handle failures/retries and propogate the status back to the calling service
 	return status, err
 }
 
-func (l logger) constructSplunkPayloadOld(message logMessage) splunkPayload {
-	switch message.method {
+func (l Logger) constructSplunkPayload(message LogMessage) splunkPayload {
+	switch l.LogType {
 	case "Payment service":
 		return splunkPayload{
 			time:   time.Now(),
 			host:   "",
-			method: l.logType + message.method,
+			method: l.LogType + message.Method,
 		}
 	case "Auth service":
 	}
@@ -58,7 +60,7 @@ func (l logger) constructSplunkPayloadOld(message logMessage) splunkPayload {
 	return splunkPayload{}
 }
 
-func (l logger) sendSplunkEventOld(payload splunkPayload) (string, error) {
+func (l Logger) sendSplunkEvent(payload splunkPayload) (string, error) {
 	// Send the event to server
 
 	// Retry it for l.retires times
