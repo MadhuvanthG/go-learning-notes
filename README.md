@@ -45,7 +45,7 @@
     * Functions with `receiver` argument
     * Defined on types
     * Available on any instance of the type on which the method is defined on
-    * Allows you to write custom types to abstract group related logic
+    * Allows you to write custom types to abstract/group related logic
     * Pointer receivers vs Value receivers
 # Custom Packages and Go Modules
     * Convention / Common practices
@@ -53,10 +53,12 @@
       * name the folder same as the package name
     * Import statements
     * Exported names
-    * Can you build a custom package as an executable?
+    * Go modules is Go's dependency management system
+    * Good material - https://blog.golang.org/using-go-modules
 # Interfaces
     * Defines requirements explicitly
-    * Helps reuse code
+    * Code encapsulation and reuse
+    * Implicit conformance
     * Good material - https://www.calhoun.io/how-do-interfaces-work-in-go/
 # Concurrency - Channels and Go routines
     * Material to watch - Rob pike's talk - https://www.youtube.com/watch?v=f6kdp27TYZs
