@@ -59,7 +59,20 @@
     * Defines requirements explicitly
     * Code encapsulation and reuse
     * Implicit conformance
+    * Empty interfaces
+    * A variable of interface type is stored as a pair of (type, value)
     * Good material - https://www.calhoun.io/how-do-interfaces-work-in-go/
+# Reflect
+    * Reflect is basically used to "examine" a variable's (of any type) fields and values
+    * Some examples of examination-
+      * how many fields does this variable have?
+      * how many methods does the type of this variable have?
+      * does this variable of type "X" implement interface of type "Y"?
+    * One of the downsides as I see it-
+      * losing type information
+      * a lot of methods in the Reflect package could "panic" (at runtime), so you need to handle errors well most likely using "CanXXX" methods of the reflect package
+    * Values can be "set" on the variable you're reflecting as well. But only if it's "settable". IOW, only if you are reflecting on a variable which was passed by reference
+    * Good material - https://blog.golang.org/laws-of-reflection
 # Concurrency - Channels and Go routines
     * Material to watch - Rob pike's talk - https://www.youtube.com/watch?v=f6kdp27TYZs
 # Error handling
