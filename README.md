@@ -13,6 +13,7 @@
     * All applications have a `main` package with a function `main` which is the entry point
     * For better readability, reusability and maintainability
 # Variables, Constants and Zero values
+    * ConstSpec and iota could be used to achieve enum-like behavior - https://play.golang.org/p/dPLyGUKu-hJ 
 # Arrays and Slices
     * What are slices? - Reference to underlying array
     * Creating a slice by slicing an array or slice using half-open range
@@ -27,6 +28,10 @@
     * Updating fields using dot notation
     * Struct is a value type
     * Embedding structs
+
+# Maps
+  * Go's implementation of Maps is a HashMap under the hood, so best case is O(1)
+  * https://dave.cheney.net/2018/05/29/how-the-go-runtime-implements-maps-efficiently-without-generics
 # Pointers
     * What are value types
     * What are reference types

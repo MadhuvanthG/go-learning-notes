@@ -12,6 +12,8 @@ func main() {
 	// demoStructAndPointers()
 
 	initializePaymentLogger()
+
+	// DemoMaps()
 }
 
 func initializePaymentLogger() {
