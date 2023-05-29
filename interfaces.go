@@ -31,7 +31,7 @@ func (p productsServicesInteractor) GetVersion() string {
 }
 
 func (p productsServicesInteractor) GetProducts() (statusCode string) {
-	request := buildRequestPayload([]string{"id", "title"}, p)
+	_ = buildRequestPayload([]string{"id", "title"}, p)
 
 	// make the request
 
@@ -59,7 +59,7 @@ func (v vendorServicesInteractor) GetVersion() string {
 }
 
 func (v vendorServicesInteractor) GetVendors() (statusCode string) {
-	request := buildRequestPayload([]string{"id", "title"}, v)
+	_ = buildRequestPayload([]string{"id", "title"}, v)
 
 	// Make the request
 

@@ -1,6 +1,6 @@
 module go-learning-notes
 
-go 1.13
+go 1.19
 
 require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
@@ -15,4 +15,5 @@ require (
 	golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae // indirect
 	golang.org/x/text v0.3.3 // indirect
 	gopkg.in/ini.v1 v1.57.0 // indirect
+	golang.org/x/tour v0.1.0
 )
